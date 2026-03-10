@@ -5,22 +5,27 @@ pipeline{
 
         stage(git_clone){
 
-            git branch: 'main', url: 'https://github.com/OmkarSahastrabudhe/kubernetes-3-tier-deploy.git'
-
+        steps{
+            git branch: 'main', url: 'https://github.com/OmkarSahastrabudhe/Kubernetes-phpApplication-redis.git'
+        }
 
 
         }
         stage(build){
-
+            steps{
             echo 'hii my name is omkar building'
-
+            }
         }
         stage(test){
-            echo 'hii my name is omkar test'
+            steps{
+            echo 'hii my name is omkar building'
+            }
 
         }
         stage(deployment){
-            echo 'hii my name is omkar deploy'
+            steps{
+            echo 'hii my name is omkar building'
+            }
 
         }
 
