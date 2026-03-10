@@ -1,0 +1,32 @@
+pipeline{
+  agent any 
+
+  stages{
+
+        stage(git_clone){
+
+            git branch: 'main', url: 'https://github.com/OmkarSahastrabudhe/kubernetes-3-tier-deploy.git'
+
+
+
+        }
+        stage(build){
+
+            echo 'hii my name is omkar building'
+
+        }
+        stage(test){
+            echo 'hii my name is omkar test'
+
+        }
+        stage(deployment){
+            echo 'hii my name is omkar deploy'
+
+        }
+
+  }
+
+
+
+
+}
