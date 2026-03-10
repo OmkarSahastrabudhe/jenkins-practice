@@ -1,0 +1,27 @@
+pipeline {
+    agent {
+        docker {
+            image 'maven:3.8.5-openjdk-17'
+        }
+    }
+    stages {
+        stage('Git Pull') {
+            steps {
+                git branch: 'main', url: 'https://github.com/shubhamkalsait/EasyCRUD.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                dir('EasyCRUD/backend') {
+                    sh 'mvn clean package -DskipTests'
+                }
+            }
+        }
+    }
+    post {
+        success {
+            // Archive the JAR so it’s downloadable from Jenkins UI
+            archiveArtifacts artifacts: 'EasyCRUD/backend/target/*.jar', fingerprint: true
+        }
+    }
+}
