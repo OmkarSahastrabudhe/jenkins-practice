@@ -1,0 +1,29 @@
+pipeline{
+   agent any
+ 
+   stages{
+
+      stage(git){
+        steps{
+            git branch: 'main', url: 'https://github.com/OmkarSahastrabudhe/docker-compose-easyCRUD.git'
+
+        }
+      }
+      stage(build){
+        steps{
+        sh '''
+          cd docker-compose-easyCRUD/backend
+           mvn clean package -DskipTests
+           '''
+        }
+      }
+      stage(print){
+        steps{
+            echo 'build sucesss'
+        }
+      }
+
+ }
+
+
+}
