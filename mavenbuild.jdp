@@ -12,7 +12,7 @@ pipeline{
       stage(build){
         steps{
         sh '''
-          cd docker-compose-easyCRUD/backend
+          cd backend
            mvn clean package -DskipTests
            '''
         }
