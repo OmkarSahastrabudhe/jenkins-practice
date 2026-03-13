@@ -1,0 +1,33 @@
+pipeline{
+   agent any
+ 
+   stages{
+
+      stage(git){
+        steps{
+            git branch: 'main', url: 'https://github.com/OmkarSahastrabudhe/docker-compose-easyCRUD.git'
+
+        }
+      }
+      stage(build){
+        steps{
+        sh '''
+          cd backend
+           mvn clean package -DskipTests
+           '''
+        }
+      }
+      stage(test){
+        steps{
+            withSonarQubeEnv(installationName: 'sonar', credentialsId: 'sonarqubeToken') {
+                         sh '''cd backend
+                        mvn sonar:sonar -Dsonar.projectKey='easycrud'
+                        '''
+}                       
+        }
+      }
+
+ }
+
+
+}
