@@ -23,11 +23,11 @@ pipeline{
                          sh '''cd backend
                         mvn sonar:sonar -Dsonar.projectKey='easycrud'
                         '''
-}                       
+                    }                       
+            }   
         }
-      }
 
- }
+    }
 
 
 }
