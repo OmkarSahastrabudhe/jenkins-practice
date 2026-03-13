@@ -21,7 +21,7 @@ pipeline{
         steps{
             withSonarQubeEnv(installationName: 'sonar', credentialsId: 'sonarqubeToken') {
                          sh '''cd backend
-                        mvn sonar:sonar -Dsonar.projectKey='easycrud'
+                        mvn sonar:sonar -Dsonar.projectKey=easycrud
                         '''
                     }                       
             }   
